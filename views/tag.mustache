@@ -1,0 +1,15 @@
+<nav>
+    <a href="/">CodeSnip Home</a>
+    <a href="/create">Create a New Snip</a>
+    <a href="/{{id}}">{{username}}'s Profile</a>
+    <a href="/logout">Logout</a>
+
+    <form action="/action_page.php" method="get">
+      Search: <input type="text" name="fname"><br>
+      <button type="submit">See all snippets</button>
+      <button type="submit" formmethod="post" formaction="/action_page_post.php">Search by Tag/Keyword </button>
+      <button type="submit" formmethod="post" formaction="/action_page_post.php">Search by Language</button>
+      <button type="submit" formmethod="post" formaction="/action_page_post.php">Search by </button>
+    </form>
+
+</nav>

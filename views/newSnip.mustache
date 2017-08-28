@@ -1,0 +1,33 @@
+<nav>
+    <a href="/">CodeSnip Home</a>
+    <a href='/profile/:id'>{{username}}'s Profile</a>
+    <a href="/logout">Logout</a>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <form action="/action_page.php" method="get">
+      Search: <input type="text" name="fname"><br>
+      <button type="submit">See all snippets</button>
+      <button type="submit" formmethod="post" formaction="/action_page_post.php">Search by Tag/Keyword </button>
+      <button type="submit" formmethod="post" formaction="/action_page_post.php">Search by Language</button>
+      <button type="submit" formmethod="post" formaction="/action_page_post.php">Search by </button>
+    </form>
+</nav>
+
+{{#snippet}}
+<div class="newSnipView">
+
+        <p id="title"><strong> Title:</strong> {{title}}</p>  <br>
+        <p id="description"> <strong> Description:</strong> {{description}} </p><br>
+        <p id="language"><strong> Language: </strong>{{#language}}{{.}} | {{/language}} </p><br>
+        <p id=code> <strong> Code:</strong> {{code}} </p><br>
+        <p id=tags> <strong> Tags: </strong>{{tags}} </p><br>
+
+
+    <form class="" action="/delete" method="post">
+        <button type="submit" name="name" value="{{name}}">Delete</button>
+    </form>
+    <button type="button" name="button"><a href="/edit/{{name}}">Edit</a></button>
+</div>
+{{/snippet}}
