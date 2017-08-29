@@ -1,31 +1,64 @@
+
 <nav>
-    <a href="/">CodeSnip Home</a>
-    <a href="/profile/:id">View all Snippets</a> <!--test-->
+    <a href="/">CodeSnips Home</a>
+     <!--test-->
+    <a href="/create">Create a Snippet</a>
     <a href="/logout">Logout</a>
-    <br>
-    <br>
-    <hr>
-    <br>
-    <form action="/search" method="get">
-      Search: <input type="text" name="fname"><br>
-      <button type="submit">See all snippets</button>
-      <button type="submit" formmethod="post" value="" formaction="/search/{{tags}}">Search by Tag/Keyword </button>
-      <button type="submit" formmethod="post" formaction="/search/language">Search by Language</button>
-      <button type="submit" formmethod="post" formaction="/search/user">Search by User </button>
-    </form>
 </nav>
 
 
-<h1>welcome to the home page, which will have the option to create or the start a snippet, or a link to the create page</h1>
 
-<!-- thinking about putting the below form into a table so that it can display nicely. -->
-<div class="createContainer">
-    <form class="" action="/viewnewsnippet/:id" method="post">
-        Title: <input type="text" name="title" value="" placeholder="Everything needs a name!"><br>
-        Description: <input type="text" name="description" value="" placeholder="Write a quick description"><br>
-        Language: <input type="text" name="language" value=""placeholder="What language is this snippet written in?"><br>
-        CodeSnip: <textarea name="code" rows="20" cols="80" placeholder="Jot something down!"></textarea><br>
-        Tags: <input type="text" name="tags" value="">
-        <button type="submit" name="button">Create Snip</button>
-    </form>
+{{#allSnippets}}
+
+
+
+
+<div class="allSnippets">
+
+
+
+<table>
+    <tr>
+        <td><h3>Title: </h3></td>
+        <td><p>{{title}}</p></td>
+    </tr>
+    {{#description}}
+    <tr>
+        <td><h3>Description: </h3></td>
+        <td><p>{{description}}</p></td>
+    </tr>
+    {{/description}}
+    <tr>
+        <td><h3>Language: </h3></td>
+        <td><p>{{language}}</p></td>
+    </tr>
+    <tr>
+        <td><h3>Code: </h3></td>
+        <td><p><code>{{code}}</code></p></td>
+
+    </tr>
+    {{#tags}}
+    <tr>
+        <td><h3>Tags: </h3></td>
+        <td> <a href="search/tags/{{.}}"><p>{{.}}</p> </a> </td>
+    </tr>
+    {{/tags}}
+
+
+    {{#language}}
+    <tr>
+        <td><h3>Tags: </h3></td>
+        <td> <a href="search/language/{{.}}"><p>{{.}}</p> </a> </td>
+    </tr>
+    {{/language}}
+
+
+</table>
+<hr>
+
+
+
 </div>
+
+
+    {{/allSnippets}}

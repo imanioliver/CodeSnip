@@ -1,17 +1,27 @@
-{{#profile}}
+<nav>
+    <a href="/">CodeSnips Home</a>
+     <!--test-->
+    <a href="/create">Create a Snippet</a>
+    <a href="/logout">Logout</a>
+
+</nav>
 
 
 
+{{#snippet}}
+<div class="newSnipView">
 
-<div class="snippetListing">
-
-
-
-        <p> <strong> Title:</strong> {{title}} </p><br>
-        {{#description}} <p><strong> description:</strong> {{.}} </p> <br>{{/description}}
-        <p> <strong> Language:</strong> {{language}} </p><br>
-        {{#code}} <p><strong> Code:</strong> {{.}} </p> <br>{{/code}}
-        {{#tags}} <p><strong> Tags:</strong> {{.}} </p> <br>{{/tags}}
+        <p id="title"><strong> Title:</strong> {{title}}</p>  <br>
+        <p id="description"> <strong> Description:</strong> {{description}} </p><br>
+        <p id="language"><strong> Language: </strong>{{#language}}{{.}} | {{/language}} </p><br>
+        <p id=code> <strong> Code:</strong> {{code}} </p><br>
+        <p id=tags> <strong> Tags: </strong>{{tags}} </p><br>
 
 
-{{/profile}}
+    <form class="" action="/delete" method="post">
+        <button type="submit" name="name" value="{{name}}">Delete</button>
+    </form>
+    {{#canEdit}}<button type="button" name="button"><a href="/edit/{{id}}">Edit</a></button>{{/canEdit}}
+    <button type="button" name="button"><a href="/edit/{{name}}">Return Home </a></button>
+</div>
+{{/snippet}}

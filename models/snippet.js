@@ -9,12 +9,13 @@ const Schema = mongoose.Schema;
 
 const snippetSchema = new Schema({
 
-    title: {type: String, required: true || null},
-    description: String || null,
-    language: {type: String, required: true || null},
-    code: {type: String, required: true || null},
-    tags: [String] || null,
-    userId: String || null,
+    title: {type: String, required: true},
+    description: String,
+    language: {type: String, required: true},
+    code: {type: String, required: true},
+    tags: [String],
+    userId: String,
+    username: String
     //mongo id is assigned for each tag
 });
 

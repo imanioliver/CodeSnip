@@ -7,12 +7,12 @@ const Schema = mongoose.Schema;
 // mongoose.connect("mongodb://localhost:27017/codesnipDirectory");
 
 const userSchema = new Schema({
-    username: {type: String, required: true, unique: true || null},
-    passwordHash: {type: String || null || null},
-    firstName: {type: String, required: true || null},
-    lastName: {type: String, required: true || null},
-    email: {type: String, required: true, unique: true || null},
-    avatar:{type: String || null},
+    username: {type: String, required: true, unique: true},
+    passwordHash: {type: String},
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
+    avatar:{type: String},
     //mongo id is assigned for each user
 });
 
