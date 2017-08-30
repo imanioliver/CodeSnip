@@ -26,25 +26,12 @@ const login = function (req, res, next) {
   }
 };
 
-// router.get("/", requireLogin,  function(req, res){
-//     // console.log("req.user", req.user);
-//     // User.find({}).sort("name")
-//     // .then(function (users) {
-//     //     data = users;
-//     //     // console.log(users);
-//         res.render("home")
-//     // });
-// });
-//
-
-
 router.get("/", requireLogin,  function(req, res){ //put in get for home
     console.log("req.user", req.user);
     Snippet.find({}).sort("name")
     .then(function (snippets) {
-        data = snippets;
         // console.log(users);
-        res.render("home", {allSnippets: data}) //put in render for home '/'
+        res.render("home", {allSnippets: snippets}) //put in render for home '/'
     });
 });
 
@@ -92,7 +79,7 @@ router.get('/create', requireLogin, function (req, res) {
 // router.post('/create/:id', function(req, res) {
 
 router.post('/create', function(req, res) {
-    let tagSplit= req.body.tags.split(", ");
+    let tagSplit= req.body.tags.split(",");
 
     // let id = req.params.id;
     // console.log("the new snippet id is:", id);
@@ -153,12 +140,9 @@ router.get('/view/:id', function (req, res){
             });
 });
 
-
-
 router.get ('/edit', function (req, res){
     res.render('edit');
 });
-
 
 router.post('/edit/:id', function(req, res) {
     let tagSplit= req.body.tags.split(", ");
@@ -177,28 +161,24 @@ router.post('/edit/:id', function(req, res) {
     })
 });
 
-
-
 router.get('/search/tags/:puppy', function(req, res){
     let cat = req.params.puppy;
-    if (cat === 'main.css') {
-        cat = temp;
-        temp = null;
-    }
+    // if (cat === 'main.css') {
+    //     cat = temp;
+    //     temp = null;
+    // }
     Snippet.find({tags: cat})
      .then(function(snippet) {
        console.log("new code snippet data: ", snippet);
-       temp = snippet;
+    //    temp = snippet;
     //   let req.user==true;
-    res.render("home", snippet);
+        res.render("tagsorlanguage", {allSnippets: snippet});
      })
      .catch(function(err) {
        console.log("ERROR!:", err);
        res.redirect("/create");
      });
 });
-
-
 
 router.get('/search/language/:eggs', function(req, res){
     let bacon = req.params.eggs;
@@ -211,70 +191,13 @@ router.get('/search/language/:eggs', function(req, res){
        console.log("new code snippet data: ", snippet);
        temp = snippet;
     //   let req.user==true;
-    res.render("home", snippet);
+    res.render("tagsorlanguage", {allSnippets:snippet});
      })
      .catch(function(err) {
        console.log("ERROR!:", err);
        res.redirect("/create");
      });
 });
-
-
-// });
-//
-// router.post('/newSnippet', function (req, res){
-//
-//     let tagSplit= req.body.tags.split(", ");
-//
-//     Snippet.create({
-//         title: req.body.title || null,
-//         description: req.body.description || null,
-//         language: req.body.language || null,
-//         code: req.body.code || null,
-//         tags: tagSplit || null,
-//         userId: req.user._id || null,
-//         username: req.user.username || null
-//      })
-//      .then(function(data) {
-//        console.log("new code snippet data: ", data);
-//     //   let req.user==true;
-//      })
-//      .catch(function(err) {
-//        console.log("ERROR!:", err);
-//
-//      });
-//      res.redirect("/viewAll"); //to home
-// });
-//
-
-
-
-///THE BELOW WAS REPLACED WITH THE GET CALL FOR '/'
-// router.get("/viewAll", requireLogin,  function(req, res){ //put in get for home
-//     console.log("req.user", req.user);
-//     Snippet.find({}).sort("name")
-//     .then(function (snippets) {
-//         data = snippets;
-//         // console.log(users);
-//         res.render("home", {allSnippets: data}) //put in render for home '/'
-//     });
-// });
-
-
-
-
-//this is what the page looks like
-// router.get('/viewnewsnippet/:id', function(req, res){
-//     let id = req.params.id;
-//     console.log(id);
-//     Snippet.find({_id: id})
-//             .then(function(snippet) {
-//                 res.render('newSnip', {snippet: snippet})
-//             })
-//             .catch(function(err) {
-//                 res.send(err);
-//             });
-// });
 
 //this is where the user can view their snippets--> in their profile
 router.get('/profile/:id', function(req, res) {
@@ -305,13 +228,9 @@ router.post('/search/:tags', function(req, res){
 
 //view by language
 
-
 router.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
-
-
-
 
 module.exports = router;

@@ -40,7 +40,7 @@
 
     <tr>
         <td><h3>Tags: </h3></td>
-        {{#tags}}<td> <a href="search/tags/{{.}}"><p>{{.}}</p> </a> </td>{{/tags}}
+        {{#tags}}<td> <p>{{.}}</p>  </td>{{/tags}}
     </tr>
 
 
@@ -48,7 +48,7 @@
     {{#language}}
     <tr>
         <td><h3>Language: </h3></td>
-        <td> <a href="search/language/{{language}}"><p>{{.}}</p> </a> </td>
+        <td> <p>{{.}}</p>  </td>
     </tr>
     {{/language}}
 
@@ -62,3 +62,6 @@
 
 
     {{/allSnippets}}
+
+
+    <button type="button" name="button"><a href="/">Return Home </a></button>
