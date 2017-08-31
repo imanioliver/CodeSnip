@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/main.css">
-<nav>
+<nav id= "homeNav">
     <a href="/">CodeSnips Home</a>
      <!--test-->
     <a href="/create">Create a Snippet</a>
@@ -13,9 +13,7 @@
 
 
 
-<div class="allSnippets">
-
-
+<div class="homeSnippets">
 
 <table>
     <tr>
@@ -35,15 +33,11 @@
     <tr>
         <td><h3>Code: </h3></td>
         <td><p><code>{{code}}</code></p></td>
-
     </tr>
-
     <tr>
         <td><h3>Tags: </h3></td>
         {{#tags}}<td> <a href="search/tags/{{.}}"><p>{{.}}</p> </a> </td>{{/tags}}
     </tr>
-
-
 
     {{#language}}
     <tr>
@@ -51,8 +45,6 @@
         <td> <a href="search/language/{{language}}"><p>{{.}}</p> </a> </td>
     </tr>
     {{/language}}
-
-
 </table>
 <hr>
 

@@ -1,3 +1,36 @@
+/*#4ABDAC blue */
+/*#FC4A1A orange*/
+/*f7b733 yellow*/
+/*dfdce3 off white*/
+
 html{
-    background-color: blue;
+    background-color: #DFDCE3;
+}
+
+.homeSnippets{
+    background-color: #FC4A1A;
+    border: solid;
+    border-color: gray;
+    border-width: medium;
+    border-radius: 10px;
+}
+
+.entryContainer {
+
+    display: flex;
+    /*flex-direction: row;*/
+    background-color: #f7b733;
+    color: white;
+}
+
+#login {
+background-color: #FC4A1A;
+
+}
+
+#signup {
+background-color: #FC4A1A;
+border-left: solid;
+border-color: black;
+border-width: medium;
 }
